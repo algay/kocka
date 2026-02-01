@@ -1514,13 +1514,13 @@ int draw_menu(void){
 	BeginDrawing();
 	ClearBackground(BLACK);
 	draw_rect((Base){ WIDTH/2-50,HEIGHT/2},(Base){ 100, 50 }, WHITE);
-	DrawText("PLAY",WIDTH/2-25,HEIGHT/2,19,BLACK);
+	DrawText("PLAY",WIDTH/2-25+GetScreenWidth()/2-WIDTH/2,HEIGHT/2+GetScreenHeight()/2-HEIGHT/2,19,BLUE);
 	Base current_mouse = (Base) { GetMouseX(), GetMouseY() };
-	current_mouse.x += GetScreenWidth()/2-WIDTH/2;
-	current_mouse.y += GetScreenHeight()/2-HEIGHT/2;
+//	current_mouse.x += GetScreenWidth()/2-WIDTH/2;
+//	current_mouse.y += GetScreenHeight()/2-HEIGHT/2;
 	EndDrawing();
 
-	if(check_collision(current_mouse,(Base){1,1},(Base) {WIDTH/2-50,HEIGHT/2}, (Base) {100, 50})){
+	if(check_collision(current_mouse,(Base){1,1},(Base) {WIDTH/2-50+GetScreenWidth()/2-WIDTH/2,HEIGHT/2+GetScreenHeight()/2-HEIGHT/2}, (Base) {100, 50})){
 		if(IsMouseButtonDown(0)){
 			game_state = GAME;
 			player.time_since_start = 0;
@@ -1537,12 +1537,12 @@ void draw_end(void){
 	ClearBackground(BLACK);
 	DrawText(timer_buff,20,20,19,WHITE);
 	draw_rect((Base){ WIDTH/2-50,HEIGHT/2+100},(Base){ 100, 50 }, WHITE);
-	DrawText("MENU",WIDTH/2-25,HEIGHT/2+100,19,BLACK);
+	DrawText("MENU",WIDTH/2-25+GetScreenWidth()/2-WIDTH/2,HEIGHT/2+100+GetScreenHeight()/2-HEIGHT/2,19,BLACK);
 	Base current_mouse = (Base) { GetMouseX(), GetMouseY() };
-	current_mouse.x += GetScreenWidth()/2-WIDTH/2;
-	current_mouse.y += GetScreenHeight()/2-HEIGHT/2;
+//	current_mouse.x += GetScreenWidth()/2-WIDTH/2;
+//	current_mouse.y += GetScreenHeight()/2-HEIGHT/2;
 	EndDrawing();
-	if(check_collision(current_mouse,(Base){1,1},(Base) {WIDTH/2-50,HEIGHT/2+100}, (Base) {100, 50})){
+	if(check_collision(current_mouse,(Base){1,1},(Base) {WIDTH/2-50+GetScreenWidth()/2-WIDTH/2,HEIGHT/2+100+GetScreenHeight()/2-HEIGHT/2}, (Base) {100, 50})){
 		if(IsMouseButtonDown(0)){
 			game_state = MENU;
 		}
